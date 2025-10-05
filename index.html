@@ -1,0 +1,146 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Learning Metaverse Prototype</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- A-Frame -->
+  <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      background: linear-gradient(to bottom right, #e3f2fd, #f1f8e9);
+      color: #333;
+    }
+
+    #ui {
+      position: absolute;
+      left: 20px;
+      top: 20px;
+      z-index: 2;
+      background: rgba(255, 255, 255, 0.95);
+      padding: 16px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      width: 260px;
+    }
+
+    #ui h2 {
+      margin-top: 0;
+      color: #1565c0;
+      font-size: 20px;
+      text-align: center;
+    }
+
+    label {
+      display: block;
+      margin: 10px 0 6px;
+      font-weight: 600;
+      color: #444;
+    }
+
+    input {
+      width: 100%;
+      padding: 8px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      outline: none;
+      transition: border-color 0.3s;
+    }
+
+    input:focus {
+      border-color: #1565c0;
+    }
+
+    button {
+      margin-top: 12px;
+      width: 100%;
+      padding: 10px;
+      background: #1565c0;
+      border: none;
+      color: white;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background: #0d47a1;
+    }
+
+    #recs {
+      margin-top: 14px;
+      font-size: 14px;
+    }
+
+    .rec-item {
+      padding: 10px;
+      background: #f9f9f9;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    }
+
+    .rec-item strong {
+      color: #2e7d32;
+    }
+
+    .startBtn {
+      margin-top: 8px;
+      width: auto;
+      padding: 6px 12px;
+      font-size: 14px;
+      border-radius: 6px;
+      background: #2e7d32;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    .startBtn:hover {
+      background: #1b5e20;
+    }
+  </style>
+</head>
+<body>
+  <div id="ui">
+    <h2>Learning Metaverse</h2>
+    <div>
+      <label>User ID</label>
+      <input id="userId" value="u1" />
+    </div>
+    <div>
+      <button id="loadRec">Load Recommendations</button>
+    </div>
+    <div id="recs"></div>
+  </div>
+
+  <a-scene>
+    <a-sky color="#cce0ff"></a-sky>
+    <!-- Grass ground -->
+    <a-plane rotation="-90 0 0" width="40" height="40" color="#81c784" position="0 0 0"></a-plane>
+
+    <!-- A small hut (rural feel) -->
+    <a-box position="-2 0.5 -3" depth="2" height="1.5" width="2.5" color="#8d6e63"></a-box>
+    <a-cone position="-2 1.8 -3" radius-bottom="2" radius-top="0.1" height="1.2" color="#5d4037"></a-cone>
+
+    <!-- Floating portal -->
+    <a-entity id="portal" position="2 1 -4">
+      <a-ring radius-inner="1.5" radius-outer="1.8" color="#1565c0" rotation="90 0 0" material="opacity:0.7"></a-ring>
+      <a-plane id="portalScreen" position="0 0 0.01" width="2.4" height="1.4" color="#0d47a1" material="opacity:0.9"></a-plane>
+      <a-entity text="value: Virtual Classroom; color: #fff; align: center" position="0 0.45 0.02"></a-entity>
+    </a-entity>
+
+    <!-- Camera -->
+    <a-entity camera look-controls position="0 1.6 0"></a-entity>
+  </a-scene>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
